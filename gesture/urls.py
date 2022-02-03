@@ -15,4 +15,5 @@ urlpatterns = [
     path('video_feed', views.video_feed, name='video_feed'),
     url(r'^signup/$', views.signup, name='signup'),
     path('login/', views.login_page, name='login'),
+    path("logout", views.logout_request, name="logout"), 
 ]

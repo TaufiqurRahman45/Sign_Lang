@@ -51,6 +51,16 @@ Header
                 <li class="active"><a href="#intro">Home</a></li>
                 <li><a href="#services">Gestures</a></li>
                 <li><a href="#footer">Contact Us</a></li>
+                {% if user.is_authenticated %}
+              <li class= "drop-down"> <a href="#">{{ user.username }}</a>
+                    <ul>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+              </li>
+            {% else %}
+              <li><a href="{% url 'login' %}" target="_blank">Login</a></li>
+              <li><a href="{% url 'signup' %}" target="_blank">Sign Up</a></li>
+            {% endif %}
             </ul>
         </nav><!-- .main-nav -->
 

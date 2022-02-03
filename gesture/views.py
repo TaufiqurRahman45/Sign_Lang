@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, StreamingHttpResponse
 
 # from .forms import NewUserForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm,LoginForm
 
@@ -31,8 +31,8 @@ def signup(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password1=password)
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
     else:
@@ -52,6 +52,11 @@ def login_page(request):
                 return redirect('home')
     context = {'form': forms}
     return render(request, 'design/login.html', context)
+
+def logout_request(request):
+    logout(request)
+    # messages.info(request, "Logged out successfully!")
+    return redirect("home")
 
 
 @login_required(login_url='login')
