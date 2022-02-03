@@ -8,7 +8,7 @@ from .views import login_page
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('gesture/<int:id>', views.gesture, name='gesture'),
+    path('gesture/', views.gesture, name='gesture'),
     path('question/', views.question, name='question'),
     path('before_question/', views.before_question, name='before_question'),
     path('result/', views.result, name='result'),

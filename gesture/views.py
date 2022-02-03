@@ -65,7 +65,7 @@ def home(request):
     return render(request, 'design/home.html', {'gesture_images': gesture_images})
 
 def gesture(request, id=None):
-    gesture_image = GestureImage.objects.get(id=id)
+    gesture_image = GestureImage.objects.all()
     return render(request, 'design/gesture.html', {'gesture_image': gesture_image})
 
 
