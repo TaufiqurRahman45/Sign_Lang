@@ -26,11 +26,16 @@
 
         <div class="logo float-left">
             <h2 class="text-light" style="margin:0px 0px 2px 0px; font-size: 20px;"><a href="/"
-                                                                                       class="scrollto"><span>Predicting Fatigue in Hand Gesture</span></a></h2>
+                                                                                       class="scrollto"><span>GRS Bengali</span></a></h2>
         </div>
         <nav class="main-nav float-right d-none d-lg-block">
             <ul>
                 <li class="active" style="margin: 0px;"><a href="/">Home</a></li>
+                <li class= "drop-down"> <a href="#">{{ user.username }}</a>
+                    <ul>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+              </li>
             </ul>
         </nav>
 

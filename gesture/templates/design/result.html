@@ -32,11 +32,16 @@
     <div class="container">
 
         <div class="logo float-left">
-            <h2 class="text-light" style="margin:0px 0px 2px 0px; font-size: 20px;"><a href="/" class="scrollto"><span>Predicting Fatigue in Hand Gesture</span></a></h2>
+            <h2 class="text-light" style="margin:0px 0px 2px 0px; font-size: 20px;"><a href="/" class="scrollto"><span>GRS Bengali</span></a></h2>
         </div>
         <nav class="main-nav float-right d-none d-lg-block">
             <ul>
                 <li class="active" style="margin: 0px;"><a href="/">Home</a></li>
+                <li class= "drop-down"> <a href="#">{{ user.username }}</a>
+                    <ul>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+              </li>
             </ul>
         </nav>
 
@@ -47,17 +52,16 @@
 
 
     <h1 style="margin-top:22%; text-align: center;">Result</h1>
-    <h5>Actual time: {{ actual_time }} seconds</h5>
-    <h5>Taken time: {{ taken_time }} seconds ({{ taken_seconds }} seconds)</h5>
-    <h5>Point: {{ point }}</h5>
+
+    <h5 style="text-align: center;">Your Result: {{ point }}</h5>
 
     
-        <div class="alert alert-warning" role="alert">
+        <!-- <div class="alert alert-warning" role="alert">
             Note: If taken time is higher than actual time then it may lead to fatigue.
-        </div>
+        </div> -->
    
 
-    <div id="myFirstwidget-container">{{ output|safe }}</div>
+    <!-- <div id="myFirstwidget-container">{{ output|safe }}</div>
 
     {% if point < 15 %}
     <div class="alert alert-warning" role="alert" style="text-align: center; font-size: large;">
@@ -67,7 +71,7 @@
     <div class="alert alert-danger" role="alert" style="text-align: center; font-size: large;">
         Result: You have <b>higher</b> chance of fatigue.
     </div>
-    {% endif %}
+    {% endif %} -->
 </div>
 
 </body>
