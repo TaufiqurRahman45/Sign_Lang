@@ -64,11 +64,12 @@ def home(request):
     gesture_images = GestureImage.objects.all()
     return render(request, 'design/home.html', {'gesture_images': gesture_images})
 
+@login_required(login_url='login')
 def gesture(request, id=None):
     gesture_image = GestureImage.objects.all()
     return render(request, 'design/gesture.html', {'gesture_image': gesture_image})
 
-
+@login_required(login_url='login')
 def before_question(request):
     if "point" in request.session.keys():
         del request.session["point"]
@@ -87,7 +88,7 @@ def before_question(request):
 
     return redirect(reverse('question'))
 
-
+@login_required(login_url='login')
 def question(request):
     if request.method == "POST" and request.POST.get('type', '') == 'answers':
         data = request.POST
@@ -113,7 +114,7 @@ def video_feed(request):
     return StreamingHttpResponse(gen(VideoCamera()),
                                  content_type='multipart/x-mixed-replace; boundary=frame')
 
-
+@login_required(login_url='login')
 def result(request):
     if "point" not in request.session.keys() and "actual_time" not in request.session.keys() and "taken_time" not in request.session.keys():
         return redirect(reverse('home'))
